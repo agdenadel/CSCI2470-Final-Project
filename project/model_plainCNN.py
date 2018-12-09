@@ -4,7 +4,7 @@ LEARNING_RATE = 0.001
 BATCH_SIZE = 100
 
 class Model:
-    def __init__(self):
+    def __init__(self, X_train, y_train, ):
         
 
         # computation graph
