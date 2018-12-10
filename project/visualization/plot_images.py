@@ -1,5 +1,7 @@
 import cv2
 import matplotlib.pyplot as plt
+import numpy as np
+from PIL import Image
 
 
 #create custom color maps
@@ -71,6 +73,37 @@ def plot_images(blue, green, red, yellow):
     plt.show()
 
 
+def make_rgb_image_from_four_channels(channels: list, image_width=512, image_height=512) -> np.ndarray:
+    """
+    It makes literally RGB image from source four channels, 
+    where yellow image will be yellow color, red will be red and so on  
+    """
+    rgb_image = np.zeros(shape=(image_height, image_width, 3), dtype=np.float)
+    yellow = np.array(Image.open(channels[0]))
+    # yellow is red + green
+    rgb_image[:, :, 0] += yellow/2   
+    rgb_image[:, :, 1] += yellow/2
+    # loop for R,G and B channels
+    for index, channel in enumerate(channels[1:]):
+        current_image = Image.open(channel)
+        rgb_image[:, :, index] += current_image
+    # Normalize image
+    rgb_image = rgb_image / rgb_image.max() * 255
+    return rgb_image.astype(np.uint8)
+
+
+def overlay_images(image_names, nrows=1, ncols=1):
+    """
+    Visualize the part of classes, started from class with index start_class_index,
+    make nrows classes, ncols examples for each one
+    """
+    rgb_image = make_rgb_image_from_four_channels(image_names)
+
+    # show image
+    plt.imshow(rgb_image)
+    plt.show()
+
+
 
 
 def main():
@@ -80,7 +113,9 @@ def main():
                    '00008af0-bad0-11e8-b2b8-ac1f6b6435d0_yellow.png']
     images = list(map(lambda x: cv2.imread(x, 0), image_files))
 
-    plot_images(images[0], images[1], images[2], images[3])
+    #plot_images(images[0], images[1], images[2], images[3])
+
+    overlay_images(image_files)
 
 
 
