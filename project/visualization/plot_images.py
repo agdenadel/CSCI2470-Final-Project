@@ -55,6 +55,9 @@ plt.register_cmap(name='yellows', data=cdict4)
 
 
 def plot_images(blue, green, red, yellow):
+    """
+    Displays a 2x2 table of each of the channel images.
+    """
     figure_size = 20
     fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(figure_size,figure_size))
     ax[0, 0].imshow(green, cmap="greens")
@@ -75,8 +78,7 @@ def plot_images(blue, green, red, yellow):
 
 def make_rgb_image_from_four_channels(channels: list, image_width=512, image_height=512) -> np.ndarray:
     """
-    It makes literally RGB image from source four channels, 
-    where yellow image will be yellow color, red will be red and so on  
+    Creates an RGB image from the four channels.
     """
     rgb_image = np.zeros(shape=(image_height, image_width, 3), dtype=np.float)
     yellow = np.array(Image.open(channels[0]))
@@ -94,8 +96,7 @@ def make_rgb_image_from_four_channels(channels: list, image_width=512, image_hei
 
 def overlay_images(image_names, nrows=1, ncols=1):
     """
-    Visualize the part of classes, started from class with index start_class_index,
-    make nrows classes, ncols examples for each one
+    Displays an image with the four channels overlaid on each other.
     """
     rgb_image = make_rgb_image_from_four_channels(image_names)
 
