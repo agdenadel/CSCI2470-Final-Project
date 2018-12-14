@@ -48,4 +48,7 @@ Evaluation is based on the [macro F1 score](https://en.wikipedia.org/wiki/F1_sco
 | Method      | F1 Score | 
 |-------------|----------|
 | All Zeros   | 0.019    |
-| All Classes | 0.111    |
+| All Classes | 0.111    |s
+
+### Repository structure
+You can find the Vanilla CNN and pretrained models under /project/ file. 
