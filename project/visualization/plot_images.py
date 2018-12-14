@@ -58,7 +58,7 @@ def plot_images(blue, green, red, yellow):
     """
     Displays a 2x2 table of each of the channel images.
     """
-    figure_size = 20
+    figure_size = 40
     fig, ax = plt.subplots(nrows=2, ncols=2, figsize=(figure_size,figure_size))
     ax[0, 0].imshow(green, cmap="greens")
     ax[0, 0].set_title("Protein of interest", fontsize=18)
@@ -114,7 +114,7 @@ def main():
                    '00008af0-bad0-11e8-b2b8-ac1f6b6435d0_yellow.png']
     images = list(map(lambda x: cv2.imread(x, 0), image_files))
 
-    #plot_images(images[0], images[1], images[2], images[3])
+    plot_images(images[0], images[1], images[2], images[3])
 
     overlay_images(image_files)
 
