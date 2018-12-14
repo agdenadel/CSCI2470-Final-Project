@@ -3,10 +3,6 @@ from collections import defaultdict
 import numpy as np
 from PIL import Image
 
-"""
-NOTE: It takes a long time to read every image file. If you have any recommendations on that, pls let me know!!
--Pinar Demetci
-"""
 
 def next_batch(batchSize, images, labels):
     '''

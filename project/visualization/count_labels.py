@@ -45,7 +45,6 @@ for line in lines:
 
 
 # make pie chart
-'''
 norm_counter = counter/sum(counter)
 others = 0.0
 others_num = 0
@@ -74,15 +73,14 @@ for t in p_text:
 plt.axis('equal')
 plt.legend()
 plt.show()
-'''
+
 
 # make bar chart
-'''
 plt.bar(np.arange(28), counter)
 plt.xlabel(labels)
 plt.ylabel('Count')
 plt.title('Count of All Types of Proteins')
 plt.show()
-'''
+
 
 f.close()
